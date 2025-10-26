@@ -1,0 +1,65 @@
+<html> <!--Cometários-->
+
+<head>
+    <title>
+        Aula 4
+    </title>
+</head>
+
+<body>
+    <h1>Cursos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome do Curso</th>
+                <th>Descrição</th>
+                <th>Turno/Horário</th>
+                <th>Professores</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Curso de HTML</td>
+                <td>Curso introdutório sobre HTML</td>
+                <td>Segunda e Quarta - 18:00 às 20:00</td>
+                <td>João Silva</td>
+                <td>R$ 200,00</td>
+            </tr>
+            <tr>
+                <td>Curso de CSS</td>
+                <td>Curso introdutório sobre CSS</td>
+                <td>Terça e Quinta - 19:00 às 21:00</td>
+                <td>Maria Oliveira</td>
+                <td>R$ 220,00</td>
+            </tr>
+            <tr>
+                <td>Curso de JavaScript</td>
+                <td>Curso introdutório sobre JavaScript</td>
+                <td>Sábado - 10:00 às 12:00</td>
+                <td>Carlos Santos</td>
+                <td>R$ 250,00</td>
+            </tr>
+            <!-- Adicione mais linhas conforme necessário -->
+        </tbody>
+    </table>
+    <form action="https://65eb9e5843ce1641893416c7.mockapi.io/Usuario" method="post">
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="usuario_nome" />
+        </div>
+        <div>
+            <label for="login">E-mail:</label>
+            <input type="text" id="login" name="usuario_login" />
+        </div>
+        <div>
+            <label for="senha">Mensagem:</label>
+            <textarea id="senha" name="usuario_senha"></textarea>
+        </div>
+        <div class="button">
+            <button type="submit">Enviar sua mensagem</button>
+        </div>
+    </form>
+</body>
+
+</html>
