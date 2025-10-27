@@ -59,6 +59,3 @@ GeeksForGeeks C Tutorials
 
 Rodrigo Martins Leite
 Programming Student @ Perth, AU
-GitHub
- · LinkedIn
- · YouTube
