@@ -1,90 +1,127 @@
-Relational Database Activity (MySQL)
+# Relational Database Exercises (MySQL)
 
-This repository contains three exercises focused on relational database modeling and data manipulation using MySQL, demonstrating one-to-many (1:N) relationships with FOREIGN KEY.
+This repository contains three independent SQL exercises designed to practice relational database modeling, table creation, foreign keys, data insertion, and basic `JOIN` queries using **MySQL / MariaDB**.
 
-📌 Overview
-Activity	Theme	Main Tables	Relationship
-1	Brands & Products	marcas → produtos	1 brand → many products
-2	Movie Categories	categorias → filmes	1 category → many movies
-3	Animal Species	especies → animais	1 species → many animals
-🗂️ Activity 1 — Brands & Products
-🔹 Table Structure
-CREATE TABLE marcas (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    site_oficial VARCHAR(255),
-    telefone VARCHAR(20)
-);
+Each exercise demonstrates a **one-to-many (1:N)** relationship between a parent table and a child table.
 
-CREATE TABLE produtos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    preco_custo DECIMAL(10, 2),
-    preco_venda DECIMAL(10, 2),
-    data_validade DATE,
-    marca_id INT,
-    FOREIGN KEY (marca_id) REFERENCES marcas(id)
-);
+---
 
-🔹 Relationship
+## 📌 Overview
 
-A brand can have many products
-marcas (1) ---- (N) produtos
+| Exercise | Theme | Tables | Relationship |
+|----------|--------|---------|--------------|
+| 1 | Brands & Products | `brands` → `products` | 1 brand → many products |
+| 2 | Categories & Movies | `categories` → `movies` | 1 category → many movies |
+| 3 | Species & Animals | `species` → `animals` | 1 species → many animals |
 
-🎬 Activity 2 — Categories & Movies
-🔹 Table Structure
-CREATE TABLE categorias (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    publico_alvo VARCHAR(255)
-);
+All scripts include:
 
-CREATE TABLE filmes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(255) NOT NULL,
-    sinopse TEXT,
-    estudio VARCHAR(255),
-    categoria_id INT,
-    FOREIGN KEY (categoria_id) REFERENCES categorias(id)
-);
+✅ `CREATE TABLE` with primary & foreign keys  
+✅ `INSERT` statements with sample data  
+✅ Example `SELECT` and `JOIN` queries  
+✅ `DROP TABLE IF EXISTS` for safe re-execution  
+✅ Optional `CREATE DATABASE` section  
+✅ Indexes and constraints (`CHECK`, `UNIQUE`, `ON DELETE / UPDATE`)  
 
-🔹 Relationship
+---
 
-categorias (1) ---- (N) filmes
+## 🗂️ Folder Structure
 
-🦁 Activity 3 — Species & Animals
-🔹 Table Structure
-CREATE TABLE especies (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    descricao TEXT
-);
+📦 relational-database-exercises
+┣ 📂 scripts
+┃ ┣ brands_products.sql
+┃ ┣ categories_movies.sql
+┃ ┗ species_animals.sql
+┣ README.md
 
-CREATE TABLE animais (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    data_nasc DATE,
-    peso DECIMAL(10,2),
-    especie_id INT,
-    FOREIGN KEY (especie_id) REFERENCES especies(id)
-);
+yaml
+Copiar código
 
-🔹 Relationship
+---
 
-especies (1) ---- (N) animais
+## 🧠 Exercise 1 — Brands & Products
 
-▶️ How to Run the Project
+brands (parent table)
+products (child table, FK → brand_id)
 
-Install MySQL or use a client such as MySQL Workbench, DBeaver, XAMPP, etc.
+yaml
+Copiar código
 
-Create a database:
+Key concepts covered:
 
+- `PRIMARY KEY`, `FOREIGN KEY`, `ON DELETE RESTRICT`
+- `INSERT` with multiple rows
+- `JOIN` to combine brand + product info
+
+---
+
+## 🎬 Exercise 2 — Categories & Movies
+
+categories (parent)
+movies (child, FK → category_id)
+
+yaml
+Copiar código
+
+Introduces:
+
+- Text fields (`TEXT`)
+- Filtering and sorting data by category
+- Aliasing tables (`m`, `c`) in queries
+
+---
+
+## 🦁 Exercise 3 — Species & Animals
+
+species (parent)
+animals (child, FK → species_id)
+
+sql
+Copiar código
+
+Highlights:
+
+- `CHECK` constraint for numeric validation
+- `DATE` and `DECIMAL` types
+- Example `JOIN` to list animals with their species
+
+---
+
+## ▶️ How to Run the SQL Scripts
+
+### Option A — MySQL Workbench / DBeaver / TablePlus
+1. Create a new connection to your MySQL server  
+2. Open any `.sql` file from `/scripts`  
+3. Execute the full script or run section by section  
+
+### Option B — Terminal
+
+```sh
+mysql -u root -p
 CREATE DATABASE activity_db;
 USE activity_db;
+SOURCE scripts/brands_products.sql;
+Option C — Execute with a single command
+sh
+Copiar código
+mysql -u root -p activity_db < scripts/brands_products.sql
+🔍 Example Query (from Exercise 1)
+sql
+Copiar código
+SELECT 
+    p.id,
+    p.name       AS product,
+    b.name       AS brand,
+    p.cost_price,
+    p.sale_price
+FROM products p
+JOIN brands b ON b.id = p.brand_id
+ORDER BY b.name, p.name;
+🎯 Learning Outcomes
+After completing the exercises, you should be able to:
 
-
-Copy and run the SQL scripts for the desired activity
-
-Query the tables:
-
-SELECT * FROM <table_name>;
+✅ Create relational tables with primary & foreign keys
+✅ Insert and query data using SQL
+✅ Perform JOIN operations between related tables
+✅ Understand referential integrity (ON DELETE, ON UPDATE)
+✅ Use aliases, constraints, and indexes in SQL
