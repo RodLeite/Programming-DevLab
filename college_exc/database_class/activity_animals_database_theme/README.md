@@ -105,6 +105,8 @@ Option C — Execute with a single command
 sh
 Copiar código
 mysql -u root -p activity_db < scripts/brands_products.sql
+
+
 🔍 Example Query (from Exercise 1)
 sql
 Copiar código
@@ -117,6 +119,8 @@ SELECT
 FROM products p
 JOIN brands b ON b.id = p.brand_id
 ORDER BY b.name, p.name;
+
+
 🎯 Learning Outcomes
 After completing the exercises, you should be able to:
 
