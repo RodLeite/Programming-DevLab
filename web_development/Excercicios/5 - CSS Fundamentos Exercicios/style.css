@@ -1,0 +1,38 @@
+
+body {
+    font-family: Arial;
+    padding: 50px 200px;
+  }
+  
+  h1 {
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    font-family: "Lucida Sans";
+    margin: 0;
+    background-color: #d2b48c;
+  }
+  
+  h1:hover {
+    background-color: black;
+  }
+
+  
+  ol {
+    list-style-type: decimal;
+  }
+  
+  ol li {
+    text-align: justify;
+  }
+ 
+  ol li:first-child {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+
+  p {
+    text-indent: 20px;
+  }
+  
